@@ -9,13 +9,36 @@
 import SwiftUI
 
 struct ContentView: View {
+    var tag: String
     var body: some View {
-        Text("Hello World")
+        VStack {
+            MapView()
+                .edgesIgnoringSafeArea(.top)
+                .frame(height:300)
+             
+            Avatar()
+                .offset(y:-130)
+                .padding(.bottom, -130)
+            
+            VStack (alignment: .leading, spacing: 10) {
+                Text("Turtle Rock")
+                HStack {
+                    Text("Joshua Tree National Park")
+                        .font(.subheadline)
+                    Spacer()
+                    Text(tag)
+                        .font(.subheadline)
+                }
+            }
+            .padding()
+          Spacer()
+        }.navigationBarTitle(Text(tag), displayMode: .inline)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(tag: "California_dream")
     }
 }
+
