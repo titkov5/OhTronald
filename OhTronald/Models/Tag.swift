@@ -8,7 +8,28 @@
 
 import Foundation
 
-struct Tag: Identifiable {
-    var id: Int = 0
-    var value: String = ""
+public class Tag: Decodable {
+    public let tags: [String]?
+    public let count : Int
+    public let total : Int
+    public let value : String = ""
+    enum CodingKeys: String, CodingKey {
+        case tags = "_embedded"
+        case count = "count"
+        case total = "total"
+    }
+    
+    internal init(tags: [String], count: Int, total: Int) {
+        self.tags = tags
+        self.total = total
+        self.count = count
+     }
+    
+    required public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        tags = try container.decode([String].self, forKey: .tags)
+        total = try container.decode(Int.self, forKey: .total)
+        count = try container.decode(Int.self, forKey: .count)
+    }
 }
+

@@ -8,6 +8,22 @@
 
 import Foundation
 
-class Quote {
+class Quote: Decodable {
     var value: String = ""
+    var count: Int = 0
+    //var appeared_at
+    //var "quote_id"
+    
+    enum CodingKeys: String, CodingKey {
+        case value = "first_name"
+    }
+   
+    internal init(quote: String) {
+         self.value = quote
+     }
+    
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        value = try container.decode(String.self, forKey: .value)
+    }
 }
