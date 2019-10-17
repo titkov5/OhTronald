@@ -33,6 +33,7 @@
 		3557D9342354EFFB0002305F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3557D9332354EFFB0002305F /* NetworkService.swift */; };
 		3557D9362354F01B0002305F /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3557D9352354F01B0002305F /* ApiRequest.swift */; };
 		3557D9382354F0440002305F /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3557D9372354F0440002305F /* NetworkServiceError.swift */; };
+		35E7F87623582AAF0084296B /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E7F87523582AAF0084296B /* TagViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		3557D9332354EFFB0002305F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3557D9352354F01B0002305F /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		3557D9372354F0440002305F /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
+		35E7F87523582AAF0084296B /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 		352169C12352EE12002F42A7 /* OhTronald */ = {
 			isa = PBXGroup;
 			children = (
+				35E7F87423582A980084296B /* ViewModel */,
 				3557D92E2354EF960002305F /* Services */,
 				352169FC23537A6F002F42A7 /* Views */,
 				352169C22352EE12002F42A7 /* AppDelegate.swift */,
@@ -236,6 +239,14 @@
 				3557D9372354F0440002305F /* NetworkServiceError.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		35E7F87423582A980084296B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				35E7F87523582AAF0084296B /* TagViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,6 +400,7 @@
 				352169FE23537A7F002F42A7 /* TagRow.swift in Sources */,
 				35216A0023537EBD002F42A7 /* QuoteRow.swift in Sources */,
 				3557D9362354F01B0002305F /* ApiRequest.swift in Sources */,
+				35E7F87623582AAF0084296B /* TagViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

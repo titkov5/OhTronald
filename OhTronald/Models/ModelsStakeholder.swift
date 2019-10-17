@@ -8,13 +8,13 @@
 
 import Foundation
 
-let tags: [Tag] = createTags()
+let tags: [TagViewModel] = createTags()
 
-func createTags() -> [Tag] {
-        var result: [Tag] = []
+func createTags() -> [TagViewModel] {
+        var result: [TagViewModel] = []
     var i = 0
         for tag in tagValues {
-            result.append(Tag(id: i, value: tag))
+            result.append(TagViewModel(id: i, value: tag))
             i+=1
         }
         return result
