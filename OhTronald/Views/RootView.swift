@@ -11,10 +11,8 @@ import SwiftUI
 struct RootView: View {
     var body: some View {
         NavigationView {
-            
             List {
                 ForEach(tags) {tag in
-                 // TagRow(tag: tag.value)
                     TagsHorizontalRow(tag: "wow", quotes: ["one","two"])
                 }
             }.navigationBarTitle("Tronald's Topics")

@@ -7,11 +7,11 @@
 //
 
 import Foundation
+//TODO privacy
+ let baseUrl = "https://api.tronalddump.io/"
+ let header = ["accept": "application/hal+json"]
 
-private let baseUrl = "https://api.tronalddump.io/"
-private let header = ["accept": "application/hal+json"]
-
-private struct Endpoints {
+struct Endpoints {
     static let tag = "tag"
     static let search = "search/quote?query"
 }

@@ -9,19 +9,37 @@
 import SwiftUI
 
 struct TagsList: View {
+    @EnvironmentObject var data: DataContainer
+    @State var showFavoritesOnly = false
+    
     var body: some View {
         NavigationView {
-            List(tags, id: \.id) { tag in
-                NavigationLink(destination: ContentView(tag: tag.value)) {
-                    TagRow(tag: tag.value)
+            ScrollView {
+      
+                HStack {
+                    Spacer()
+                    Toggle(isOn: $data.showFavoritesOnly) {
+                        Text("Favorites only")
+                    }
+                    Spacer()
                 }
-            }
-        }.navigationBarTitle(Text("Tags"))
+                
+                ForEach(data.fetchedTags) { tag in
+                    if !self.data.showFavoritesOnly || tag.isFavorite {
+                        NavigationLink(destination: ContentView(tag: tag.value)) {
+                            TagRow(tag: tag)
+                        }
+                    }
+                }
+            
+        }
+        }
     }
 }
 
 struct TagsList_Previews: PreviewProvider {
     static var previews: some View {
         TagsList()
+            .environmentObject(DataContainer())
     }
 }

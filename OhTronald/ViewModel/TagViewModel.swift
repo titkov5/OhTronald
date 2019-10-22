@@ -9,7 +9,8 @@
 import Foundation
 
 
-struct TagViewModel: Identifiable {
-    var id: Int = 0
-    var value: String = ""
+struct TagViewModel: Identifiable, Hashable {
+    var id: Int
+    var value: String
+    var isFavorite: Bool
 }
