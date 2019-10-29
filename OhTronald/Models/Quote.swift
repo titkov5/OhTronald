@@ -8,22 +8,43 @@
 
 import Foundation
 
-class Quote: Decodable {
-    var value: String = ""
-    var count: Int = 0
-    //var appeared_at
-    //var "quote_id"
-    
-    enum CodingKeys: String, CodingKey {
-        case value = "first_name"
-    }
-   
-    internal init(quote: String) {
-         self.value = quote
+class QuoteData:Decodable {
+    var appeared_at: String
+    var created_at: String
+    var quote_id: String
+    var tags: [String]
+    var value: String
+    //TODO: пробросл url
+}
+
+ //TODO: rename quotes as network model
+ class Quote: Decodable {
+     var count: Int = 0
+     var total: Int = 0
+     var quotes: [QuoteData]
+     
+     enum CodingKeys: String, CodingKey {
+        case embedded = "_embedded"
+        case tags
+        case count
+        case total
+        case quotes
      }
     
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        value = try container.decode(String.self, forKey: .value)
-    }
-}
+     
+     public required init(from decoder: Decoder) throws {
+         let container = try decoder.container(keyedBy: CodingKeys.self)
+         count = try container.decode(Int.self, forKey: .count)
+         total = try container.decode(Int.self, forKey: .total)
+         
+        let nestedContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .embedded)
+        quotes = try nestedContainer.decode([QuoteData].self, forKey: .quotes)
+        for q in quotes {
+            print(q.value)
+        }
+        
+     }
+ }
+
+ 
+

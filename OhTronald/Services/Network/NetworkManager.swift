@@ -9,11 +9,11 @@
 import Foundation
 //TODO privacy
  let baseUrl = "https://api.tronalddump.io/"
- let header = ["accept": "application/hal+json"]
+ let headers = ["accept": "application/hal+json"]
 
 struct Endpoints {
-    static let tag = "tag"
-    static let search = "search/quote?query"
+    static let tag = "/tag"
+    static let quote = "/search/quote"
 }
 
 class NetworkManager {
@@ -21,9 +21,8 @@ class NetworkManager {
     private let service = NetworkService()
     
     func fetchTags() {
-        let urlString = baseUrl + Endpoints.tag
-        let tagRequest = ApiRequest.init(httpMethod: .GET,urlString: urlString ,
-                        headers: header)
+        let tagRequest = ApiRequest.init(httpMethod: .GET, path: Endpoints.tag ,
+                        headers: headers)
         
         service.fetchEntities(apiRequest: tagRequest, type: Tag.self) { (entities, error) in
             print("tag:", entities?.tags)
@@ -31,5 +30,12 @@ class NetworkManager {
         }
     }
     
-    
+    func fetchQuotes(tag: String) {
+        let urlString = baseUrl + Endpoints.quote
+        let quoteRequest = ApiRequest.init(httpMethod: .GET, path: Endpoints.quote, parameters: ["query" : tag], headers: headers)
+        
+        service.fetchEntities(apiRequest: quoteRequest, type: Quote.self) { (entities, error) in
+            print("entites", entities?.count)
+        }
+    }
 }

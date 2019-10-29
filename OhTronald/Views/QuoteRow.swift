@@ -15,14 +15,13 @@ struct QuoteRow: View {
             Avatar()
             Text(quote)
         }
-        
     }
 }
 
 struct QuoteRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-             QuoteRow(quote: quotes[0])
+             QuoteRow(quote: "Test")
         }.previewLayout(.fixed(width: 320, height: 110))
     }
 }

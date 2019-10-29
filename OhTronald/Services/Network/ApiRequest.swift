@@ -16,25 +16,44 @@ public enum HTTPMethod {
 }
 
 struct ApiConfig {
-    static let baseUrlString = "https://api.tronalddump.io/"
-    static let tagUrlString = "tag"
+    static let host = "api.tronalddump.io"
+    static let scheme = "https"
 }
 
 public protocol ApiRequestProtocol {
-    var urlString: String { get }
+    var path: String { get }
     var httpMethod: HTTPMethod { get }
-    var parameters: [String : Any]? { get }
+    var parameters: [String : String]? { get }
+    var url: URL? { get }
 }
 
 public struct ApiRequest: ApiRequestProtocol {
-    public let urlString: String
+       
+    public let path: String
     public let httpMethod: HTTPMethod
-    public let parameters: [String : Any]?
+    public let parameters: [String : String]?
     public let headers:[String: String]?
     
-    init(httpMethod: HTTPMethod, urlString:String, parameters: [String : Any]? = nil, headers:[String:String]?) {
+    public var url: URL? {
+        var components = URLComponents()
+        components.scheme = ApiConfig.scheme
+        components.host = ApiConfig.host
+        components.path = path
+        components.queryItems = []
+        if let parameters = parameters, parameters.count > 0 {
+            var queryItems : [URLQueryItem] = []
+            for (key,value) in parameters {
+                queryItems.append(URLQueryItem(name: key, value: value))
+            }
+            components.queryItems = queryItems
+        }
+        
+        return components.url
+    }
+    
+    init(httpMethod: HTTPMethod, path:String, parameters: [String : String]? = nil, headers:[String:String]?) {
         self.httpMethod = httpMethod
-        self.urlString = urlString
+        self.path = path
         self.parameters = parameters
         self.headers = headers
     }

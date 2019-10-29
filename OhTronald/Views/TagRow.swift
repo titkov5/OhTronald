@@ -18,7 +18,6 @@ struct TagRow: View {
     
     var body: some View {
         HStack {
-    
             Text(tag.value)
             Spacer()
             if tag.isFavorite {
@@ -32,14 +31,9 @@ struct TagRow: View {
 
 struct TagRow_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            TagRow(tag: tags[0])
+        TagRow(tag: DataContainer().fetchedTags[0])
                 .environmentObject(DataContainer())
-            TagRow(tag: tags[2])
-                .environmentObject(DataContainer())
-            TagRow(tag: tags[3])
-                .environmentObject(DataContainer())
-        }.previewLayout(.fixed(width: 320, height: 80))
+        .previewLayout(.fixed(width: 320, height: 80))
         
     }
 }

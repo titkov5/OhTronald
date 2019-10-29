@@ -24,42 +24,44 @@ public class NetworkService: NetworkServiceProtocol {
 
     public func performRequest(apiRequest: ApiRequestProtocol, completion: @escaping NetworkCompletionHandler) {
         
-        guard let url = URL(string: apiRequest.urlString) else {
-            DispatchQueue.main.async {
-                completion(.failure(.badUrl))
-            }
+        if let url = apiRequest.url {
+
+            var sessionTask : URLSessionTask?
             
-            return
-        }
-        var sessionTask : URLSessionTask?
-        
-        switch apiRequest.httpMethod {
-        case .GET:
-            sessionTask = defaultSession.dataTask(with: url) { ( data, response, error) in
-                DispatchQueue.main.async {
-                    if let response = response as? HTTPURLResponse {
-                        if response.statusCode == 200 {
-                            if let data = data {
-                                completion(.success(data))
-                            }else {
-                                completion(.failure(.emptyData))
-                            }
-                        } else {
-                            if let error = NetworkServiceError(responseStatus: response.statusCode) {
-                                completion(.failure(error))
+            switch apiRequest.httpMethod {
+            case .GET:
+                sessionTask = defaultSession.dataTask(with: url) { ( data, response, error) in
+                    DispatchQueue.main.async {
+                        if let response = response as? HTTPURLResponse {
+                            if response.statusCode == 200 {
+                                if let data = data {
+                                    completion(.success(data))
+                                }else {
+                                    completion(.failure(.emptyData))
+                                }
                             } else {
-                                completion(.failure(.networkError("network error with code:" + String(response.statusCode))))
+                                if let error = NetworkServiceError(responseStatus: response.statusCode) {
+                                    completion(.failure(error))
+                                } else {
+                                    completion(.failure(.networkError("network error with code:" + String(response.statusCode))))
+                                }
                             }
                         }
                     }
                 }
+                sessionTask?.resume()
+                
+            default:
+                DispatchQueue.main.async {
+                    completion(.failure(.unsupportedHttpMethod))
+                }
+                return
             }
-            sessionTask?.resume()
-            
-        default:
+        }  else {
             DispatchQueue.main.async {
-                completion(.failure(.unsupportedHttpMethod))
+                completion(.failure(.badUrl))
             }
+            
             return
         }
     }

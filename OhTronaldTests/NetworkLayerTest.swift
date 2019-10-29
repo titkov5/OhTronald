@@ -14,11 +14,11 @@ class NetworkLayerTest: XCTestCase {
     var networkService: NetworkServiceProtocol?
     
     var tagEntitiesRequest: ApiRequest {
-        ApiRequest(httpMethod:  .GET, urlString: "https://api.tronalddump.io/tag", headers: headers )
+        ApiRequest(httpMethod:  .GET, path: "/tag", headers: headers )
     }
     
     var quotesEntitiesRequest: ApiRequest {
-        ApiRequest(httpMethod: .GET, urlString: "https://api.tronalddump.io/tag", parameters: ["query" : "obama", "page":1, "size":2], headers: headers)
+        ApiRequest(httpMethod: .GET, path: "/search/quote", parameters: ["query" : "obama", "page":"1", "size":"3"], headers: headers)
     }
     
     let headers: [String : String] = ["accept": "application/hal+json"]
@@ -45,7 +45,7 @@ class NetworkLayerTest: XCTestCase {
     }
 
     func testCheckBadUrlError() {
-        let request = ApiRequest(httpMethod: .GET, urlString: "https:\\api.tronalddump.io\tag", headers: headers)
+        let request = ApiRequest(httpMethod: .GET, path: "tag", headers: headers)
         
         let expectation = XCTestExpectation(description: "SimpleRequestTest")
         
@@ -74,7 +74,6 @@ class NetworkLayerTest: XCTestCase {
         let quoteExpectation = expectation(description: "FetchQuoteEntities")
         
         networkService?.fetchEntities(apiRequest: quotesEntitiesRequest, type: Quote.self, completion: { (entities, error) in
-            
             XCTAssertNil(error)
             XCTAssertTrue(entities?.count == 3)
             quoteExpectation.fulfill()
@@ -90,7 +89,7 @@ class NetworkLayerTest: XCTestCase {
         XCTAssertNotNil(data)
         let entities = networkService?.decodeResponse(entityType: Tag.self, data: data!)
         XCTAssertTrue(entities?.count == 54)
-       XCTAssertEqual(entities?.tags?.first , "Hillary Clinton" )
+        XCTAssertEqual(entities?.tags?.first , "Hillary Clinton" )
     }
 
 }

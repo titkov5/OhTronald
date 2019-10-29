@@ -9,8 +9,14 @@
 import SwiftUI
 
 struct QuotesList: View {
+    @EnvironmentObject var container: DataContainer
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            ForEach(container.fetchedQuotes) { quote  in
+                QuoteRow(quote: quote.value)
+            }
+        }
     }
 }
 

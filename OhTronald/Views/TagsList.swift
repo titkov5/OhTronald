@@ -10,12 +10,10 @@ import SwiftUI
 
 struct TagsList: View {
     @EnvironmentObject var data: DataContainer
-    @State var showFavoritesOnly = false
     
     var body: some View {
         NavigationView {
             ScrollView {
-      
                 HStack {
                     Spacer()
                     Toggle(isOn: $data.showFavoritesOnly) {
@@ -26,13 +24,15 @@ struct TagsList: View {
                 
                 ForEach(data.fetchedTags) { tag in
                     if !self.data.showFavoritesOnly || tag.isFavorite {
-                        NavigationLink(destination: ContentView(tag: tag.value)) {
+                        NavigationLink(destination: QuotesList().environmentObject(self.data).onAppear() {
+                            self.data.currentTag = tag.value
+                        }) {
                             TagRow(tag: tag)
                         }
                     }
                 }
-            
-        }
+                
+            }
         }
     }
 }

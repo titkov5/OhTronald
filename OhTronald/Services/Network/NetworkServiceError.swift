@@ -38,7 +38,7 @@ public enum NetworkServiceError: Error, Equatable {
         }
     }
 
-    init?(responseStatus: Int) {
+    init?(responseStatus: Int) { //TODO all from api server
         switch responseStatus {
         case 400:
             self = .badRequest
