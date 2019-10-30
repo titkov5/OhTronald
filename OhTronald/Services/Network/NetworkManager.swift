@@ -24,7 +24,7 @@ class NetworkManager {
         let tagRequest = ApiRequest.init(httpMethod: .GET, path: Endpoints.tag ,
                         headers: headers)
         
-        service.fetchEntities(apiRequest: tagRequest, type: Tag.self) { (entities, error) in
+        service.fetchEntities(apiRequest: tagRequest, type: TagsListModel.self) { (entities, error) in
             print("tag:", entities?.tags)
             print("error:",error)
         }
@@ -34,7 +34,7 @@ class NetworkManager {
         let urlString = baseUrl + Endpoints.quote
         let quoteRequest = ApiRequest.init(httpMethod: .GET, path: Endpoints.quote, parameters: ["query" : tag], headers: headers)
         
-        service.fetchEntities(apiRequest: quoteRequest, type: Quote.self) { (entities, error) in
+        service.fetchEntities(apiRequest: quoteRequest, type: QuoteListModel.self) { (entities, error) in
             print("entites", entities?.count)
         }
     }

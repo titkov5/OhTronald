@@ -65,7 +65,7 @@ class NetworkLayerTest: XCTestCase {
     func testFetchEntities() {
         let tagExpectation = expectation(description: "FetchTagEntities")
         
-        networkService?.fetchEntities(apiRequest: tagEntitiesRequest, type: Tag.self, completion: { (entities, error) in
+        networkService?.fetchEntities(apiRequest: tagEntitiesRequest, type: TagsListModel.self, completion: { (entities, error) in
             XCTAssertNil(error)
             XCTAssertNotNil(entities)
             tagExpectation.fulfill()
@@ -73,7 +73,7 @@ class NetworkLayerTest: XCTestCase {
         
         let quoteExpectation = expectation(description: "FetchQuoteEntities")
         
-        networkService?.fetchEntities(apiRequest: quotesEntitiesRequest, type: Quote.self, completion: { (entities, error) in
+        networkService?.fetchEntities(apiRequest: quotesEntitiesRequest, type: QuoteNetworkModel.self, completion: { (entities, error) in
             XCTAssertNil(error)
             XCTAssertTrue(entities?.count == 3)
             quoteExpectation.fulfill()
@@ -87,7 +87,7 @@ class NetworkLayerTest: XCTestCase {
         XCTAssertNotNil(tagsUrl)
         let data = try? Data(contentsOf: tagsUrl ?? URL(fileURLWithPath: ""))
         XCTAssertNotNil(data)
-        let entities = networkService?.decodeResponse(entityType: Tag.self, data: data!)
+        let entities = networkService?.decodeResponse(entityType: TagsListModel.self, data: data!)
         XCTAssertTrue(entities?.count == 54)
         XCTAssertEqual(entities?.tags?.first , "Hillary Clinton" )
     }

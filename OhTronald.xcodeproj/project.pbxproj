@@ -13,12 +13,12 @@
 		352169CC2352EE12002F42A7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 352169CB2352EE12002F42A7 /* Preview Assets.xcassets */; };
 		352169CF2352EE12002F42A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352169CD2352EE12002F42A7 /* LaunchScreen.storyboard */; };
 		352169E52352EE12002F42A7 /* OhTronaldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352169E42352EE12002F42A7 /* OhTronaldUITests.swift */; };
-		352169F52352F06F002F42A7 /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352169F42352F06F002F42A7 /* DataContainer.swift */; };
+		352169F52352F06F002F42A7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352169F42352F06F002F42A7 /* AppState.swift */; };
 		352169F923531D10002F42A7 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352169F823531D10002F42A7 /* Avatar.swift */; };
 		352169FE23537A7F002F42A7 /* TagRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352169FD23537A7F002F42A7 /* TagRow.swift */; };
 		35216A0023537EBD002F42A7 /* QuoteRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352169FF23537EBD002F42A7 /* QuoteRow.swift */; };
-		35216A0223537F8E002F42A7 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35216A0123537F8E002F42A7 /* Tag.swift */; };
-		35216A0423537F9A002F42A7 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35216A0323537F9A002F42A7 /* Quote.swift */; };
+		35216A0223537F8E002F42A7 /* TagsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35216A0123537F8E002F42A7 /* TagsListModel.swift */; };
+		35216A0423537F9A002F42A7 /* QuoteListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35216A0323537F9A002F42A7 /* QuoteListModel.swift */; };
 		35216A0A23538661002F42A7 /* QuotesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35216A0923538661002F42A7 /* QuotesList.swift */; };
 		35216A0E23538CA8002F42A7 /* TagsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35216A0D23538CA8002F42A7 /* TagsList.swift */; };
 		3557D92A2354EEFA0002305F /* tags.json in Resources */ = {isa = PBXBuildFile; fileRef = 3557D9282354EEFA0002305F /* tags.json */; };
@@ -62,12 +62,12 @@
 		352169E02352EE12002F42A7 /* OhTronaldUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OhTronaldUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		352169E42352EE12002F42A7 /* OhTronaldUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhTronaldUITests.swift; sourceTree = "<group>"; };
 		352169E62352EE12002F42A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		352169F42352F06F002F42A7 /* DataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
+		352169F42352F06F002F42A7 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		352169F823531D10002F42A7 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		352169FD23537A7F002F42A7 /* TagRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRow.swift; sourceTree = "<group>"; };
 		352169FF23537EBD002F42A7 /* QuoteRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteRow.swift; sourceTree = "<group>"; };
-		35216A0123537F8E002F42A7 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
-		35216A0323537F9A002F42A7 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		35216A0123537F8E002F42A7 /* TagsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsListModel.swift; sourceTree = "<group>"; };
+		35216A0323537F9A002F42A7 /* QuoteListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListModel.swift; sourceTree = "<group>"; };
 		35216A0923538661002F42A7 /* QuotesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesList.swift; sourceTree = "<group>"; };
 		35216A0D23538CA8002F42A7 /* TagsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsList.swift; sourceTree = "<group>"; };
 		3557D9282354EEFA0002305F /* tags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tags.json; sourceTree = "<group>"; };
@@ -129,18 +129,17 @@
 		352169C12352EE12002F42A7 /* OhTronald */ = {
 			isa = PBXGroup;
 			children = (
-				35E7F87423582A980084296B /* ViewModel */,
+				35E7F87423582A980084296B /* ViewModels */,
 				3557D92E2354EF960002305F /* Services */,
 				352169FC23537A6F002F42A7 /* Views */,
 				352169C22352EE12002F42A7 /* AppDelegate.swift */,
 				352169C42352EE12002F42A7 /* SceneDelegate.swift */,
+				352169F42352F06F002F42A7 /* AppState.swift */,
 				352169C82352EE12002F42A7 /* Assets.xcassets */,
 				352169CD2352EE12002F42A7 /* LaunchScreen.storyboard */,
 				352169D02352EE12002F42A7 /* Info.plist */,
 				352169F32352F01B002F42A7 /* Models */,
-				352169F22352F011002F42A7 /* App */,
 				352169CA2352EE12002F42A7 /* Preview Content */,
-				352169F823531D10002F42A7 /* Avatar.swift */,
 			);
 			path = OhTronald;
 			sourceTree = "<group>";
@@ -172,19 +171,11 @@
 			path = OhTronaldUITests;
 			sourceTree = "<group>";
 		};
-		352169F22352F011002F42A7 /* App */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
 		352169F32352F01B002F42A7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				352169F42352F06F002F42A7 /* DataContainer.swift */,
-				35216A0123537F8E002F42A7 /* Tag.swift */,
-				35216A0323537F9A002F42A7 /* Quote.swift */,
+				35216A0123537F8E002F42A7 /* TagsListModel.swift */,
+				35216A0323537F9A002F42A7 /* QuoteListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,12 +183,29 @@
 		352169FC23537A6F002F42A7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				352169FD23537A7F002F42A7 /* TagRow.swift */,
-				352169FF23537EBD002F42A7 /* QuoteRow.swift */,
-				35216A0923538661002F42A7 /* QuotesList.swift */,
-				35216A0D23538CA8002F42A7 /* TagsList.swift */,
+				352AD66A23687A0600B61C8D /* Tags */,
+				352AD66B23687A1600B61C8D /* Quotes */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		352AD66A23687A0600B61C8D /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				352169FD23537A7F002F42A7 /* TagRow.swift */,
+				35216A0D23538CA8002F42A7 /* TagsList.swift */,
+			);
+			path = Tags;
+			sourceTree = "<group>";
+		};
+		352AD66B23687A1600B61C8D /* Quotes */ = {
+			isa = PBXGroup;
+			children = (
+				352169F823531D10002F42A7 /* Avatar.swift */,
+				352169FF23537EBD002F42A7 /* QuoteRow.swift */,
+				35216A0923538661002F42A7 /* QuotesList.swift */,
+			);
+			path = Quotes;
 			sourceTree = "<group>";
 		};
 		3557D9272354EE420002305F /* Mocks */ = {
@@ -228,13 +236,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		35E7F87423582A980084296B /* ViewModel */ = {
+		35E7F87423582A980084296B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				35E7F87523582AAF0084296B /* TagViewModel.swift */,
 				35AF87B323609AC0009D6DE3 /* QuoteViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,14 +381,14 @@
 				35216A0A23538661002F42A7 /* QuotesList.swift in Sources */,
 				35AF87B423609AC0009D6DE3 /* QuoteViewModel.swift in Sources */,
 				3557D9382354F0440002305F /* NetworkServiceError.swift in Sources */,
-				352169F52352F06F002F42A7 /* DataContainer.swift in Sources */,
+				352169F52352F06F002F42A7 /* AppState.swift in Sources */,
 				352169C32352EE12002F42A7 /* AppDelegate.swift in Sources */,
-				35216A0423537F9A002F42A7 /* Quote.swift in Sources */,
+				35216A0423537F9A002F42A7 /* QuoteListModel.swift in Sources */,
 				352169C52352EE12002F42A7 /* SceneDelegate.swift in Sources */,
 				352169F923531D10002F42A7 /* Avatar.swift in Sources */,
 				3557D9342354EFFB0002305F /* NetworkService.swift in Sources */,
 				35216A0E23538CA8002F42A7 /* TagsList.swift in Sources */,
-				35216A0223537F8E002F42A7 /* Tag.swift in Sources */,
+				35216A0223537F8E002F42A7 /* TagsListModel.swift in Sources */,
 				3557D9312354EFC10002305F /* NetworkManager.swift in Sources */,
 				352169FE23537A7F002F42A7 /* TagRow.swift in Sources */,
 				35216A0023537EBD002F42A7 /* QuoteRow.swift in Sources */,

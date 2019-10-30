@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Tag: Decodable {
+public class TagsListModel: Decodable {
     public let tags: [String]?
     public let count : Int
     public let total : Int

@@ -9,13 +9,15 @@
 import SwiftUI
 
 struct QuotesList: View {
-    @EnvironmentObject var container: DataContainer
+    @EnvironmentObject var state: AppState
     
     var body: some View {
         ScrollView {
-            ForEach(container.fetchedQuotes) { quote  in
+            ForEach(state.fetchedQuotes) { quote  in
                 QuoteRow(quote: quote.value)
             }
+        }.onDisappear {
+            self.state.fetchedQuotes = []
         }
     }
 }

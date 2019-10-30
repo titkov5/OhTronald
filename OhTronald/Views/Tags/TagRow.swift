@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TagRow: View {
     
-    @EnvironmentObject var data: DataContainer
+    @EnvironmentObject var data: AppState
     var tag: TagViewModel
     var tagIndex: Int {
         data.fetchedTags.firstIndex(where: { $0.id == tag.id}) ?? 0
@@ -31,8 +31,8 @@ struct TagRow: View {
 
 struct TagRow_Previews: PreviewProvider {
     static var previews: some View {
-        TagRow(tag: DataContainer().fetchedTags[0])
-                .environmentObject(DataContainer())
+        TagRow(tag: AppState().fetchedTags[0])
+                .environmentObject(AppState())
         .previewLayout(.fixed(width: 320, height: 80))
         
     }
