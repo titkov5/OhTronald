@@ -12,7 +12,7 @@ public class TagsListModel: Decodable {
     public let tags: [String]?
     public let count : Int
     public let total : Int
-    public let value : String = ""
+
     enum CodingKeys: String, CodingKey {
         case tags = "_embedded"
         case count = "count"

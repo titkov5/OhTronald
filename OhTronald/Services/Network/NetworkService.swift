@@ -11,8 +11,9 @@ import Foundation
 public typealias NetworkCompletionHandler = (Result<Data, NetworkServiceError>) -> Void
 
 public protocol NetworkServiceProtocol {
-    func performRequest(apiRequest: ApiRequestProtocol, completion: @escaping NetworkCompletionHandler)
     
+    func performRequest(apiRequest: ApiRequestProtocol, completion: @escaping NetworkCompletionHandler)
+   
     func fetchEntities<T>(apiRequest: ApiRequestProtocol, type: T.Type, completion: @escaping (T?, NetworkServiceError?) -> Void) where T:Decodable
     
     func decodeResponse<T:Decodable>(entityType:T.Type, data:Data) -> T?
@@ -20,14 +21,19 @@ public protocol NetworkServiceProtocol {
 
 public class NetworkService: NetworkServiceProtocol {
     
-    private let defaultSession = URLSession(configuration: .default)
-
+    init() {
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .reloadIgnoringLocalCacheData
+        config.urlCache = nil
+        self.defaultSession = URLSession(configuration: config)
+    }
+    
+    private let defaultSession: URLSession
+    
     public func performRequest(apiRequest: ApiRequestProtocol, completion: @escaping NetworkCompletionHandler) {
         
         if let url = apiRequest.url {
-
             var sessionTask : URLSessionTask?
-            
             switch apiRequest.httpMethod {
             case .GET:
                 sessionTask = defaultSession.dataTask(with: url) { ( data, response, error) in

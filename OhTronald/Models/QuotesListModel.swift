@@ -14,10 +14,9 @@ class Quote: Decodable {
     var quote_id: String
     var tags: [String]
     var value: String
-    var url_string: String
 }
 
- class QuoteListModel: Decodable {
+ class QuotesListModel: Decodable {
      var count: Int = 0
      var total: Int = 0
      var quotes: [Quote]
@@ -36,7 +35,7 @@ class Quote: Decodable {
          total = try container.decode(Int.self, forKey: .total)
          
         let nestedContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .embedded)
-        quotes = try nestedContainer.decode([Quote].self, forKey: .quotes)
+        quotes = try nestedContainer.decode([Quote].self, forKey: .tags)
      }
  }
 

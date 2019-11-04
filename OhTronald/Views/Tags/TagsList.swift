@@ -10,23 +10,23 @@ import SwiftUI
 
 struct TagsList: View {
     @EnvironmentObject var data: AppState
+    @EnvironmentObject var viewModel: TagsListViewModel
     
     var body: some View {
         NavigationView {
                 ScrollView {
                         HStack {
                             Spacer()
-                            Toggle(isOn: $data.showFavoritesOnly) {
+                            Toggle(isOn: $viewModel.showFavoritesOnly) {
                                 Text("Favorites only")
                             }
                             Spacer()
                         }
                     
-                        ForEach(data.fetchedTags) { tag in
-                            if !self.data.showFavoritesOnly || tag.isFavorite {
-                                NavigationLink(destination: QuotesList().environmentObject(self.data).onAppear() {
-                                    self.data.currentTag = tag.value
-                                }) {
+                    ForEach(viewModel.tags) { tag in
+                        if !self.viewModel.showFavoritesOnly || tag.isFavorite {
+                                NavigationLink(destination:
+                                    QuotesList().environmentObject(QuotesListViewModel(tag: tag.value))) {
                                     TagRow(tag: tag)
                                 }
                             }
@@ -40,6 +40,6 @@ struct TagsList: View {
 struct TagsList_Previews: PreviewProvider {
     static var previews: some View {
         TagsList()
-            .environmentObject(AppState())
+            .environmentObject(TagsListViewModel())
     }
 }

@@ -73,7 +73,7 @@ class NetworkLayerTest: XCTestCase {
         
         let quoteExpectation = expectation(description: "FetchQuoteEntities")
         
-        networkService?.fetchEntities(apiRequest: quotesEntitiesRequest, type: QuoteNetworkModel.self, completion: { (entities, error) in
+        networkService?.fetchEntities(apiRequest: quotesEntitiesRequest, type: QuotesListModel.self, completion: { (entities, error) in
             XCTAssertNil(error)
             XCTAssertTrue(entities?.count == 3)
             quoteExpectation.fulfill()

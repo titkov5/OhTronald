@@ -9,15 +9,24 @@
 import SwiftUI
 
 struct QuotesList: View {
-    @EnvironmentObject var state: AppState
+
+    @EnvironmentObject var viewModel: QuotesListViewModel
     
     var body: some View {
         ScrollView {
-            ForEach(state.fetchedQuotes) { quote  in
-                QuoteRow(quote: quote.value)
+            ForEach(viewModel.quotes) { quote  in
+                QuoteRow(viewModel: quote)
             }
-        }.onDisappear {
-            self.state.fetchedQuotes = []
+            if !viewModel.isFull {
+                Button(action: {
+                    self.viewModel.uploadNewPage()
+                }) {
+                    Text("Load more...")
+                }
+            }
+        }.onAppear() {
+            self.viewModel.uploadNewPage()
+            //self.state.fetchedQuotes = []
         }
     }
 }

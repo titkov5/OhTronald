@@ -9,11 +9,14 @@
 import SwiftUI
 
 struct QuoteRow: View {
-    var quote:String
+    var viewModel: QuoteViewModel
+
     var body: some View {
         HStack{
             Avatar()
-            Text(quote)
+            Text(viewModel.value)
+            Spacer()
+            Text(String(viewModel.id))
         }
     }
 }
@@ -21,7 +24,7 @@ struct QuoteRow: View {
 struct QuoteRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-             QuoteRow(quote: "Test")
+            QuoteRow(viewModel: QuoteViewModel(id: 1, value: "quote.value"))
         }.previewLayout(.fixed(width: 320, height: 110))
     }
 }

@@ -7,35 +7,56 @@
 //
 
 import Foundation
-//TODO privacy
- let baseUrl = "https://api.tronalddump.io/"
- let headers = ["accept": "application/hal+json"]
+
+let baseUrl = "https://api.tronalddump.io/"
+let headers = ["accept": "application/hal+json"]
+
+let kPage = "page"
+let kSize = "size"
+let kQuery = "query"
 
 struct Endpoints {
     static let tag = "/tag"
-    static let quote = "/search/quote"
+    static let quotesByTag = "/tag/"
+    static let search = "/search/quote"
 }
 
 class NetworkManager {
 
     private let service = NetworkService()
-    
-    func fetchTags() {
+
+    func fetchTagListModel(completionHandler: @escaping (_ tagsList: TagsListModel?) -> Void) {
         let tagRequest = ApiRequest.init(httpMethod: .GET, path: Endpoints.tag ,
-                        headers: headers)
+                                         parameters: [:], headers: headers)
         
-        service.fetchEntities(apiRequest: tagRequest, type: TagsListModel.self) { (entities, error) in
-            print("tag:", entities?.tags)
-            print("error:",error)
+        service.fetchEntities(apiRequest: tagRequest, type: TagsListModel.self) { (listModel, error) in
+            completionHandler(listModel)
         }
     }
     
-    func fetchQuotes(tag: String) {
-        let urlString = baseUrl + Endpoints.quote
-        let quoteRequest = ApiRequest.init(httpMethod: .GET, path: Endpoints.quote, parameters: ["query" : tag], headers: headers)
+    func fetchQuotes(page: Int, size:Int, tag: String, completionHandler: @escaping(_ quotes: QuotesListModel?) -> Void ) {
         
-        service.fetchEntities(apiRequest: quoteRequest, type: QuoteListModel.self) { (entities, error) in
-            print("entites", entities?.count)
+        let pageAsString = String(page)
+        let sizeAsString = String(size)
+        let parameters:[String: String] = [kPage: pageAsString, kSize: sizeAsString]
+        
+        let quoteRequest = ApiRequest.init(httpMethod: .GET, path: Endpoints.quotesByTag + tag, parameters: parameters, headers: headers)
+        
+        service.fetchEntities(apiRequest: quoteRequest, type: QuotesListModel.self) { (listModel, error) in
+            completionHandler(listModel)
         }
     }
+    
+//    func fetchQuotes(page: Int, size:Int, tag: String, completionHandler: @escaping(_ quotes: QuotesListModel?) -> Void ) {
+//
+//        let pageAsString = String(page)
+//        let sizeAsString = String(size)
+//        let parameters:[String: String] = [kPage: pageAsString, kSize: sizeAsString, kQuery: tag]
+//
+//        let quoteRequest = ApiRequest.init(httpMethod: .GET, path: Endpoints.quotesByTag, parameters: parameters, headers: headers)
+//
+//        service.fetchEntities(apiRequest: quoteRequest, type: QuotesListModel.self) { (listModel, error) in
+//            completionHandler(listModel)
+//        }
+//    }
 }
