@@ -55,6 +55,7 @@ public class NetworkService: NetworkServiceProtocol {
                         }
                     }
                 }
+                
                 sessionTask?.resume()
                 
             default:
@@ -95,4 +96,6 @@ public class NetworkService: NetworkServiceProtocol {
         
         return nil
     }
+    
+    
 }

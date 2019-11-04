@@ -13,6 +13,8 @@ struct SearchQuotesList: View {
     var body: some View {
         VStack {
             TextField("search", text: $viewModel.searchQuote)
+            
+                
             ScrollView {
                 ForEach(viewModel.searchResult) { quote  in
                     QuoteRow(viewModel: quote)

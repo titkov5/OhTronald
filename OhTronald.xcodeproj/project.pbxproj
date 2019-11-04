@@ -26,8 +26,10 @@
 		3556D337236DAE7F004E63C6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556D336236DAE7F004E63C6 /* NetworkManager.swift */; };
 		3556D339236EF4B2004E63C6 /* QuotesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556D338236EF4B2004E63C6 /* QuotesListViewModel.swift */; };
 		3556D343236FED6C004E63C6 /* SearchQuotesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556D342236FED6C004E63C6 /* SearchQuotesListViewModel.swift */; };
-		3556D345236FEF34004E63C6 /* SearchListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556D344236FEF34004E63C6 /* SearchListModel.swift */; };
+		3556D345236FEF34004E63C6 /* SearchQuotesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556D344236FEF34004E63C6 /* SearchQuotesListModel.swift */; };
 		3556D347236FF251004E63C6 /* SearchQuotesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556D346236FF251004E63C6 /* SearchQuotesList.swift */; };
+		3556D349236FF9B4004E63C6 /* RandomMemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556D348236FF9B4004E63C6 /* RandomMemeView.swift */; };
+		3556D34B236FFBCD004E63C6 /* RandomMemeQuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556D34A236FFBCD004E63C6 /* RandomMemeQuoteViewModel.swift */; };
 		3557D92A2354EEFA0002305F /* tags.json in Resources */ = {isa = PBXBuildFile; fileRef = 3557D9282354EEFA0002305F /* tags.json */; };
 		3557D92B2354EEFA0002305F /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3557D9292354EEFA0002305F /* quotes.json */; };
 		3557D92D2354EF2E0002305F /* NetworkLayerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3557D92C2354EF2E0002305F /* NetworkLayerTest.swift */; };
@@ -81,8 +83,10 @@
 		3556D336236DAE7F004E63C6 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3556D338236EF4B2004E63C6 /* QuotesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesListViewModel.swift; sourceTree = "<group>"; };
 		3556D342236FED6C004E63C6 /* SearchQuotesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQuotesListViewModel.swift; sourceTree = "<group>"; };
-		3556D344236FEF34004E63C6 /* SearchListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListModel.swift; sourceTree = "<group>"; };
+		3556D344236FEF34004E63C6 /* SearchQuotesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQuotesListModel.swift; sourceTree = "<group>"; };
 		3556D346236FF251004E63C6 /* SearchQuotesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQuotesList.swift; sourceTree = "<group>"; };
+		3556D348236FF9B4004E63C6 /* RandomMemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMemeView.swift; sourceTree = "<group>"; };
+		3556D34A236FFBCD004E63C6 /* RandomMemeQuoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomMemeQuoteViewModel.swift; sourceTree = "<group>"; };
 		3557D9282354EEFA0002305F /* tags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tags.json; sourceTree = "<group>"; };
 		3557D9292354EEFA0002305F /* quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quotes.json; sourceTree = "<group>"; };
 		3557D92C2354EF2E0002305F /* NetworkLayerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayerTest.swift; sourceTree = "<group>"; };
@@ -188,7 +192,7 @@
 			children = (
 				35216A0123537F8E002F42A7 /* TagsListModel.swift */,
 				35216A0323537F9A002F42A7 /* QuotesListModel.swift */,
-				3556D344236FEF34004E63C6 /* SearchListModel.swift */,
+				3556D344236FEF34004E63C6 /* SearchQuotesListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -226,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				3556D346236FF251004E63C6 /* SearchQuotesList.swift */,
+				3556D348236FF9B4004E63C6 /* RandomMemeView.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				3556D342236FED6C004E63C6 /* SearchQuotesListViewModel.swift */,
+				3556D34A236FFBCD004E63C6 /* RandomMemeQuoteViewModel.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -433,9 +439,10 @@
 				35AF87B423609AC0009D6DE3 /* QuoteViewModel.swift in Sources */,
 				3557D9382354F0440002305F /* NetworkServiceError.swift in Sources */,
 				3556D339236EF4B2004E63C6 /* QuotesListViewModel.swift in Sources */,
-				3556D345236FEF34004E63C6 /* SearchListModel.swift in Sources */,
+				3556D345236FEF34004E63C6 /* SearchQuotesListModel.swift in Sources */,
 				352169F52352F06F002F42A7 /* AppState.swift in Sources */,
 				3556D335236DA6BD004E63C6 /* TagsListViewModel.swift in Sources */,
+				3556D349236FF9B4004E63C6 /* RandomMemeView.swift in Sources */,
 				352169C32352EE12002F42A7 /* AppDelegate.swift in Sources */,
 				35216A0423537F9A002F42A7 /* QuotesListModel.swift in Sources */,
 				352169C52352EE12002F42A7 /* SceneDelegate.swift in Sources */,
@@ -443,6 +450,7 @@
 				3557D9342354EFFB0002305F /* NetworkService.swift in Sources */,
 				35216A0E23538CA8002F42A7 /* TagsList.swift in Sources */,
 				35216A0223537F8E002F42A7 /* TagsListModel.swift in Sources */,
+				3556D34B236FFBCD004E63C6 /* RandomMemeQuoteViewModel.swift in Sources */,
 				352169FE23537A7F002F42A7 /* TagRow.swift in Sources */,
 				3556D347236FF251004E63C6 /* SearchQuotesList.swift in Sources */,
 				35216A0023537EBD002F42A7 /* QuoteRow.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SearchListModel: Decodable {
+class SearchQuotesListModel: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case embedded = "_embedded"
@@ -18,10 +18,8 @@ class SearchListModel: Decodable {
     var quotes: [Quote]
     
     public required init(from decoder: Decoder) throws {
-
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-       let nestedContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .embedded)
-       quotes = try nestedContainer.decode([Quote].self, forKey: .quotes)
+        let nestedContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .embedded)
+        quotes = try nestedContainer.decode([Quote].self, forKey: .quotes)
     }
 }

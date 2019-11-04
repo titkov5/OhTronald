@@ -16,8 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
-        let contentView = TagsList()
-            .environmentObject(data.tagsListViewModel)
+        let contentView = RandomMemeView()
+            .environmentObject(RandomMemeQuoteViewModel())
+     //   let contentView = TagsList()
+      //      .environmentObject(data.tagsListViewModel)
 //SearchQuotesList()
 //.environmentObject(SearchQuotesListViewModel())
         // Use a UIHostingController as window root view controller.
