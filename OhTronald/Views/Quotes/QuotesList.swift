@@ -26,7 +26,6 @@ struct QuotesList: View {
             }
         }.onAppear() {
             self.viewModel.uploadNewPage()
-            //self.state.fetchedQuotes = []
         }
     }
 }

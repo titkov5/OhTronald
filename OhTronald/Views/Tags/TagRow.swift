@@ -14,12 +14,14 @@ struct TagRow: View {
     
     var body: some View {
         HStack {
+            Spacer()
             Text(tag.value)
             Spacer()
             if tag.isFavorite {
                 Image(systemName: "star.fill")
                     .imageScale(.medium)
                     .foregroundColor(.yellow)
+                Spacer()
             }
         }.frame(height: 80)
     }

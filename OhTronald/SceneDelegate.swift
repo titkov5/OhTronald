@@ -18,7 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let contentView = TagsList()
             .environmentObject(data.tagsListViewModel)
-
+//SearchQuotesList()
+//.environmentObject(SearchQuotesListViewModel())
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

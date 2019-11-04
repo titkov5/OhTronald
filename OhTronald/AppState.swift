@@ -10,9 +10,7 @@ import Foundation
 import Combine
 
 final class AppState: ObservableObject {
-
     @Published var tagsListViewModel: TagsListViewModel = TagsListViewModel()
     
     private let dataAccessManager = DataAccessManager()
-    
 }

@@ -47,16 +47,14 @@ class NetworkManager {
         }
     }
     
-//    func fetchQuotes(page: Int, size:Int, tag: String, completionHandler: @escaping(_ quotes: QuotesListModel?) -> Void ) {
-//
-//        let pageAsString = String(page)
-//        let sizeAsString = String(size)
-//        let parameters:[String: String] = [kPage: pageAsString, kSize: sizeAsString, kQuery: tag]
-//
-//        let quoteRequest = ApiRequest.init(httpMethod: .GET, path: Endpoints.quotesByTag, parameters: parameters, headers: headers)
-//
-//        service.fetchEntities(apiRequest: quoteRequest, type: QuotesListModel.self) { (listModel, error) in
-//            completionHandler(listModel)
-//        }
-//    }
+    func fetchSearchResult(searchQuote: String,completionHandler: @escaping(_ quotes: SearchListModel?) -> Void) {
+        let parameters = [kQuery: searchQuote]
+        
+        let searchRequest = ApiRequest.init(httpMethod: .GET, path: Endpoints.search, parameters: parameters, headers: headers)
+        
+        service.fetchEntities(apiRequest: searchRequest, type: SearchListModel.self) { (listModel, error) in
+            completionHandler(listModel)
+        }
+    }
+    
 }

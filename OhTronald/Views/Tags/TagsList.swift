@@ -13,26 +13,29 @@ struct TagsList: View {
     @EnvironmentObject var viewModel: TagsListViewModel
     
     var body: some View {
-        NavigationView {
+        VStack{
+         
+            NavigationView {
                 ScrollView {
-                        HStack {
-                            Spacer()
-                            Toggle(isOn: $viewModel.showFavoritesOnly) {
-                                Text("Favorites only")
-                            }
-                            Spacer()
+                    HStack {
+                        Spacer()
+                        Toggle(isOn: $viewModel.showFavoritesOnly) {
+                            Text("Favorites only")
                         }
+                        Spacer()
+                    }
                     
                     ForEach(viewModel.tags) { tag in
                         if !self.viewModel.showFavoritesOnly || tag.isFavorite {
-                                NavigationLink(destination:
-                                    QuotesList().environmentObject(QuotesListViewModel(tag: tag.value))) {
-                                    TagRow(tag: tag)
-                                }
+                            NavigationLink(destination:
+                            QuotesList().environmentObject(QuotesListViewModel(tag: tag.value))) {
+                                TagRow(tag: tag)
                             }
                         }
+                    }
                     
                 }
+            }
         }
     }
 }
