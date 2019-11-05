@@ -30,7 +30,6 @@ struct RandomMemeView: View {
                 Text("Refresh mem")
             }
             Spacer()
-            
             Button(action: {
                 self.viewModel.loadRandomQuote()
             }) {
@@ -40,7 +39,6 @@ struct RandomMemeView: View {
             if viewModel.quote != nil {
                 QuoteRow(viewModel: viewModel.quote!)
             }
-            
         }
     }
 }

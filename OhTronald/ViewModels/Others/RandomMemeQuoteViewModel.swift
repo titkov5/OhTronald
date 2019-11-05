@@ -15,8 +15,12 @@ final class RandomMemeQuoteViewModel: ObservableObject {
     
     private let networkManager = NetworkManager()
     
+    init() {
+       loadRandomMem()
+        loadRandomQuote()
+    }
+    
     func loadRandomMem() {
-
         networkManager.fetchRandomMeme { data in
             self.imageData = data
         }

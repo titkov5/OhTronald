@@ -30,8 +30,7 @@ struct TagRow: View {
 struct TagRow_Previews: PreviewProvider {
     static var previews: some View {
         TagRow(tag: TagsListViewModel().tags[0])
-                .environmentObject(AppState())
-        .previewLayout(.fixed(width: 320, height: 80))
+            .previewLayout(.fixed(width: 320, height: 80))
         
     }
 }

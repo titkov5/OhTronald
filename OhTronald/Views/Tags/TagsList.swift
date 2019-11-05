@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TagsList: View {
-    @EnvironmentObject var data: AppState
+    
     @EnvironmentObject var viewModel: TagsListViewModel
     
     var body: some View {
