@@ -14,9 +14,14 @@ struct QuoteRow: View {
     var body: some View {
         HStack{
             Avatar()
-            Text(viewModel.value)
+                .padding()
+            
             Spacer()
-            Text(String(viewModel.id))
+            
+            Text(viewModel.value)
+                .padding()
+                .foregroundColor(.black)
+            
         }
     }
 }

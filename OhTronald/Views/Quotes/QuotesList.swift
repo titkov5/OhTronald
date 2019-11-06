@@ -14,14 +14,18 @@ struct QuotesList: View {
     
     var body: some View {
         ScrollView {
+            
             ForEach(viewModel.quotes) { quote  in
                 QuoteRow(viewModel: quote)
             }
+            
             if !viewModel.isFull {
+                
                 Button(action: {
                     self.viewModel.uploadNewPage()
                 }) {
                     Text("Load more...")
+                        .padding()
                 }
             }
         }.onAppear() {
@@ -32,6 +36,6 @@ struct QuotesList: View {
 
 struct QuotesList_Previews: PreviewProvider {
     static var previews: some View {
-        QuotesList()
+        QuotesList().environmentObject(QuotesListViewModel(tag: "Hillary"))
     }
 }

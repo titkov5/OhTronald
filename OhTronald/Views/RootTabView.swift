@@ -17,6 +17,7 @@ struct RootTabView: View {
             TagsList()
             .environmentObject(TagsListViewModel())
                 .tabItem {
+                    Image(systemName: "bolt")
                     Text("Tags")
             }
             .tag(0)
@@ -24,6 +25,7 @@ struct RootTabView: View {
             SearchQuotesList()
             .environmentObject(SearchQuotesListViewModel())
                 .tabItem {
+                    Image(systemName: "circle")
                     Text("Search")
             }
             .tag(1)
@@ -31,6 +33,7 @@ struct RootTabView: View {
             RandomMemeView()
                 .environmentObject(RandomMemeQuoteViewModel())
                 .tabItem {
+                    Image(systemName: "questionmark")
                     Text("RNDM")
             }
             .tag(2)

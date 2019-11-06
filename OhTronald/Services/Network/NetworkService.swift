@@ -91,11 +91,15 @@ public class NetworkService: NetworkServiceProtocol {
             let response = try JSONDecoder().decode(entityType, from: data)
             return response
         } catch let error {
-            print(error)
+            self.handleError(error: error)
         }
         
         return nil
     }
     
     
+    func handleError(error : Error) {
+        //handle error on low level
+        print(error.localizedDescription)
+    }
 }

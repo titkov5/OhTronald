@@ -16,7 +16,7 @@ final class RandomMemeQuoteViewModel: ObservableObject {
     private let networkManager = NetworkManager()
     
     init() {
-       loadRandomMem()
+        loadRandomMem()
         loadRandomQuote()
     }
     

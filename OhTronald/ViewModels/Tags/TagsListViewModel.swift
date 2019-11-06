@@ -14,7 +14,7 @@ final class TagsListViewModel: ObservableObject {
     @Published var tags: [TagViewModel] = []
     
     private let networkManager = NetworkManager()
-     
+    
     init() {
         self.loadTags()
     }

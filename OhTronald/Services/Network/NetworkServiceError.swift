@@ -44,7 +44,7 @@ public enum NetworkServiceError: Error, Equatable {
             return false
         }
     }
-
+    
     init?(responseStatus: Int) {
         switch responseStatus {
         case 400:

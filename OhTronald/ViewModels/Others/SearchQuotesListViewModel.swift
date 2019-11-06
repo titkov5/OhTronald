@@ -19,21 +19,21 @@ final class SearchQuotesListViewModel: ObservableObject {
     private let networkManager = NetworkManager()
     
     func loadQuotes() {
-
-            networkManager.fetchSearchResult(searchQuote: searchQuote) { (newModel) in
-                self.searchResult = []
-                var fetchedQuotes:[QuoteViewModel] = []
-                var id = 0
-                if let model = newModel {
-                    for quote in model.quotes {
-                        let quoteViewModel = QuoteViewModel(id: id, value: quote.value)
-                        fetchedQuotes.append(quoteViewModel)
-                        id+=1
-                    }
-                    self.searchResult = fetchedQuotes
+        
+        networkManager.fetchSearchResult(searchQuote: searchQuote) { (newModel) in
+            self.searchResult = []
+            var fetchedQuotes:[QuoteViewModel] = []
+            var id = 0
+            if let model = newModel {
+                for quote in model.quotes {
+                    let quoteViewModel = QuoteViewModel(id: id, value: quote.value)
+                    fetchedQuotes.append(quoteViewModel)
+                    id+=1
                 }
+                self.searchResult = fetchedQuotes
             }
-    
+        }
+        
     }
     
     

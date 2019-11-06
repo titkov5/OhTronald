@@ -14,14 +14,17 @@ struct TagRow: View {
     
     var body: some View {
         HStack {
-            Spacer()
             Text(tag.value)
+                .padding()
+                .foregroundColor(.black)
+  
             Spacer()
+            
             if tag.isFavorite {
                 Image(systemName: "star.fill")
                     .imageScale(.medium)
                     .foregroundColor(.yellow)
-                Spacer()
+                    .padding()
             }
         }.frame(height: 80)
     }
@@ -29,7 +32,7 @@ struct TagRow: View {
 
 struct TagRow_Previews: PreviewProvider {
     static var previews: some View {
-        TagRow(tag: TagsListViewModel().tags[0])
+        TagRow(tag: TagViewModel(id: 0, value: "Hillary Clinton", isFavorite: true))
             .previewLayout(.fixed(width: 320, height: 80))
         
     }

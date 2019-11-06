@@ -28,7 +28,7 @@ public protocol ApiRequestProtocol {
 }
 
 public struct ApiRequest: ApiRequestProtocol {
-       
+    
     public let path: String
     public let httpMethod: HTTPMethod
     public let parameters: [String : String]?

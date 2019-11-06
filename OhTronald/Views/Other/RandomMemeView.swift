@@ -13,32 +13,42 @@ struct RandomMemeView: View {
     
     var body: some View {
         VStack {
+            Text("Random mem & quote")
+            
             Spacer()
+            .frame(height: 40)
             
             if viewModel.imageData != nil {
                 Image(uiImage: UIImage(data: viewModel.imageData!)!)
-               .resizable()
-                .frame(width: 320, height: 240, alignment: .center)
-                .scaledToFit()
+                    .resizable()
+                    .frame(width: 320, height: 240, alignment: .center)
+                    .scaledToFit()
+                    .padding()
             }
             
-
             Spacer()
+                .frame(height: 20)
+            
             Button(action: {
                 self.viewModel.loadRandomMem()
             }) {
                 Text("Refresh mem")
             }
+            
+            
+            if viewModel.quote != nil {
+                QuoteRow(viewModel: viewModel.quote!)
+            }
             Spacer()
+                .frame(height: 20)
+            
             Button(action: {
                 self.viewModel.loadRandomQuote()
             }) {
                 Text("Refresh quote")
             }
             
-            if viewModel.quote != nil {
-                QuoteRow(viewModel: viewModel.quote!)
-            }
+            Spacer()
         }
     }
 }

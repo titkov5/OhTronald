@@ -25,9 +25,9 @@ struct Endpoints {
 }
 
 class NetworkManager {
-
+    
     private let service = NetworkService()
-
+    
     func fetchTagListModel(completionHandler: @escaping (_ tagsList: TagsListModel?) -> Void) {
         let tagRequest = ApiRequest.init(httpMethod: .GET, path: Endpoints.tag ,
                                          parameters: [:], headers: jsonHeaders)
@@ -72,14 +72,20 @@ class NetworkManager {
         let randomMemeRequest = ApiRequest.init(httpMethod: .GET, path: Endpoints.randomMeme, headers: imageHeaders)
         
         service.performRequest(apiRequest: randomMemeRequest) { result in
-             switch result {
-             case .failure(let error):
+            switch result {
+            case .failure(let error):
+                self.handleError(error: error)
                 completionHandler(nil)
-
-             case .success(let data):
-                 completionHandler(data)
-             }
-         }
+                
+            case .success(let data):
+                completionHandler(data)
+            }
+        }
         
+    }
+    
+    func handleError(error : Error) {
+        //handle error on top level
+        print(error.localizedDescription)
     }
 }

@@ -12,9 +12,21 @@ struct SearchQuotesList: View {
     @EnvironmentObject var viewModel: SearchQuotesListViewModel
     var body: some View {
         VStack {
-            TextField("search", text: $viewModel.searchQuote)
+            Spacer()
             
+            Text("Search Quote")
+            
+            HStack {
+                Spacer()
                 
+                TextField("type here...", text: $viewModel.searchQuote)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .foregroundColor(.black)
+                    .shadow(radius: 5)
+                
+                Spacer()
+            }
+            
             ScrollView {
                 ForEach(viewModel.searchResult) { quote  in
                     QuoteRow(viewModel: quote)
